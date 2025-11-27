@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}About – Marcus Aurelius{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <h1>About This Manual</h1>
+
+    <p class="lead">
+        This application is inspired by the philosophy of Marcus Aurelius.  
+        It exists to help you cultivate presence, discipline, humility, and virtue —  
+        one reflection at a time.
+    </p>
+
+    <p>
+        You will use this space to journal daily, track habits, store wisdom, and  
+        shape yourself into the person you wish to become. Calm. Clear. Strong.
+    </p>
+
+    <p>
+        Each feature of this app is meant to serve your growth — both now and for  
+        future generations who may read your writings.
+    </p>
+
+    <div class="cta-row">
+        <a class="btn btn-primary" href="{{ url_for('daily') }}">Start Practicing</a>
+    </div>
+</section>
+{% endblock %}
