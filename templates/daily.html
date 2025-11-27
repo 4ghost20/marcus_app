@@ -4,6 +4,13 @@
 {% block content %}
 <section class="page-section">
     <h1>Daily Virtue</h1>
+    <h2>your Virtue of the day: {{ virtue }}</h2>
+    <h3>Other Virtues to Cultivate:</h3>
+    <ul>
+        {% for v in virtues_list %}
+            <li>{{ v }}</li>
+        {% endfor %}
+    </ul>
 
     <p class="lead">
         Each day is a chance to practice wisdom, discipline, and clarity.

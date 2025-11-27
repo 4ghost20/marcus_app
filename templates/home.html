@@ -2,7 +2,7 @@
 {% block title %}Home - Marcus Aurelius{% endblock %}
 {% block content %}
   <section class="hero">
-    <h1>Welcome</h1>
+    <h1>Welcome, {{ username }}</h1>
     <p class="lead">A simple daily practice to live with clarity, discipline, and calm.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="{{ url_for('daily') }}">Start Today</a>
