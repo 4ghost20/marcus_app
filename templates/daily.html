@@ -4,7 +4,7 @@
 <h2>Daily Reflection</h2>
 
 <form method="POST">
-    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
 
     <div>
         {{ form.reflection.label }}<br>
@@ -25,10 +25,11 @@
 {% endif %}
 
 <h3>Today's Virtue: {{ virtue }}</h3>
-<ul>
+<ul class="virtues-list">
     {% for v in virtues_list %}
         <li>{{ v }}</li>
     {% endfor %}
 </ul>
+
 
 {% endblock %}

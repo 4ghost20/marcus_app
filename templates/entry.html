@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Daily Reflection Entry</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <label for="reflection">Today's Reflection</label>
+    {{ form.reflection(rows=6, class="form-control") }}
+
+    {{ form.submit(class="btn") }}
+</form>
+{% endblock %}
