@@ -1,3 +1,9 @@
+/*==================================================
+* Marcus Aurelius App CSS - Black/White/Blue Theme
+* Fully integrated, responsive, modern block layout
+* Author: Customized for Musa M
+====================================================*/
+
 /*-------------------------------------
 1. RESET & BASE TYPOGRAPHY
 --------------------------------------*/
@@ -12,301 +18,182 @@ html, body {
     font-size: 14px;
     color: #fff;
     background: #000;
-    overflow-x: hidden;
+    line-height: 1.8;
 }
 
-a, a:hover, a:active, a:focus {
+a {
     text-decoration: none;
     color: #1e90ff;
-    font-weight: 500;
     transition: 0.3s ease;
+}
+a:hover {
+    color: #0f6dc0;
 }
 
 h1,h2,h3,h4,h5,h6 {
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
+    margin-bottom: 15px;
 }
 
 p {
     color: #ccc;
-    line-height: 1.8;
-}
-
-/* Inputs & Buttons */
-input, textarea, select, button {
-    outline: none;
-    border: none;
-    background: #111;
-    color: #fff;
-    padding: 10px;
-    border-radius: 3px;
-}
-
-button {
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-button:hover {
-    background: #0f6dc0;
+    margin-bottom: 10px;
 }
 
 /*-------------------------------------
-2. HEADER & NAVIGATION
+2. HEADER & NAV
 --------------------------------------*/
-.header-top {
+.site-header {
     background: #111;
+    padding: 15px 0;
     border-bottom: 1px solid #222;
 }
-
-.header-top ul li a {
-    color: #ccc;
-    font-size: 12px;
-}
-
-nav.navbar.bootsnav {
-    background-color: #000;
-    border-bottom: none;
-}
-
-.navbar-header a.navbar-brand {
-    color: #fff;
-    font-size: 20px;
+.site-header .brand a {
+    font-size: 24px;
     font-weight: 700;
+    color: #fff;
 }
-.navbar-header a.navbar-brand span {
+.site-header .brand a span {
     color: #1e90ff;
 }
 
-nav.navbar.bootsnav ul.nav > li > a {
-    color: #fff;
-    text-transform: uppercase;
-}
-nav.navbar.bootsnav ul.nav > li > a:hover,
-nav.navbar.bootsnav ul.nav > li.active > a {
-    color: #1e90ff;
-}
-
-/*-------------------------------------
-3. HERO SECTION
---------------------------------------*/
-.welcome-hero {
-    position: relative;
-    background: #111 url('../images/welcome-hero/banner.jpg') center/cover no-repeat;
-    text-align: center;
-    height: 800px;
-}
-
-.welcome-hero:before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-}
-
-.welcome-hero-txt h2 {
-    font-size: 48px;
-    color: #1e90ff;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.welcome-hero-txt p {
-    font-size: 18px;
-    color: #fff;
-}
-
-.welcome-hero-btn {
-    background: #1e90ff;
-    color: #fff;
-    border-radius: 3px;
-    padding: 15px 30px;
+.main-nav a {
+    margin-left: 25px;
     font-weight: 500;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
-.welcome-hero-btn:hover {
-    background: #0f6dc0;
-}
-
-/*-------------------------------------
-4. LIST TOPICS
---------------------------------------*/
-.single-list-topics-content {
-    background: #111;
-    color: #fff;
-    border-radius: 3px;
-    text-align: center;
-    transition: 0.3s;
-}
-.single-list-topics-content:hover {
-    background: #1e90ff;
-    box-shadow: 0 5px 15px rgba(30,144,255,0.5);
-}
-
-/*-------------------------------------
-5. WORKS / HOW IT WORKS
---------------------------------------*/
-.single-how-works {
-    background: #111;
-    color: #fff;
-    text-align: center;
-    padding: 40px;
-    border-radius: 3px;
-    transition: 0.3s;
-}
-.single-how-works:hover {
-    background: #1e90ff;
-    box-shadow: 0 5px 15px rgba(30,144,255,0.5);
-}
-
-/*-------------------------------------
-6. EXPLORE SECTION
---------------------------------------*/
-.explore {
-    background: #000;
-    color: #fff;
-    padding: 120px 0;
-}
-
-.single-explore-item {
-    background: #111;
-    border: 1px solid #222;
-    transition: 0.3s;
-}
-.single-explore-item:hover {
-    background: #1e90ff;
-    box-shadow: 0 10px 20px rgba(30,144,255,0.3);
-}
-
-/*-------------------------------------
-7. TESTIMONIALS
---------------------------------------*/
-.single-testimonial-box {
-    background: #111;
-    color: #fff;
-    box-shadow: 0 0 5px rgba(255,255,255,0.1);
-    transition: 0.3s;
-}
-.single-testimonial-box:hover {
-    box-shadow: 0 10px 20px rgba(30,144,255,0.3);
-}
-
-/*-------------------------------------
-8. STATISTICS / COUNTER
---------------------------------------*/
-.statistics {
-    background: #000 url('../../assets/images/counter/counter-banner.jpg') center/cover fixed;
-    color: #fff;
-}
-.statistics-content {
-    font-size: 60px;
+.main-nav a:hover {
     color: #1e90ff;
 }
 
 /*-------------------------------------
-9. BLOG
+3. CONTAINER
 --------------------------------------*/
-.single-blog-item {
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/*-------------------------------------
+4. BUTTONS
+--------------------------------------*/
+.btn, button {
+    background: #1e90ff;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s ease;
+}
+.btn:hover, button:hover {
+    background: #0f6dc0;
+}
+
+/*-------------------------------------
+5. FORMS
+--------------------------------------*/
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #222;
     background: #111;
     color: #fff;
-    border-radius: 3px;
+    margin-bottom: 15px;
+}
+input:focus, textarea:focus, select:focus {
+    border-color: #1e90ff;
+}
+
+/*-------------------------------------
+6. LESSON & REFLECTION BLOCKS
+--------------------------------------*/
+.lesson, .single-list-topics-content {
+    background: #111;
+    border: 1px solid #222;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
     transition: 0.3s;
 }
-.single-blog-item:hover {
+.lesson:hover, .single-list-topics-content:hover {
+    background: #1e90ff;
+    color: #fff;
     box-shadow: 0 10px 20px rgba(30,144,255,0.3);
 }
-
-/*-------------------------------------
-10. SUBSCRIBE
---------------------------------------*/
-.subscription {
-    background: #000;
-    color: #fff;
+.lesson h2, .lesson-item h3 {
+    color: #1e90ff;
+}
+.lesson-item p {
+    color: #ccc;
 }
 
-.subscription-input-group .subscription-input-form {
+/*-------------------------------------
+7. VIRTUE LIST
+--------------------------------------*/
+.virtues-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.virtues-list li {
+    background: #222;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+/*-------------------------------------
+8. FOOTER
+--------------------------------------*/
+.site-footer {
     background: #111;
-    color: #fff;
-    border: 1px solid #222;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #222;
 }
-.appsLand-btn {
-    background: #1e90ff;
-    color: #fff;
-}
-.appsLand-btn:hover {
-    background: #0f6dc0;
+.site-footer small {
+    color: #ccc;
 }
 
 /*-------------------------------------
-11. FOOTER
+9. ALERTS / FLASH
 --------------------------------------*/
-.footer-menu {
-    background: #111;
-    color: #fff;
+.flash {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 4px;
 }
-
-.footer-social a {
+.flash-success {
     background: #1e90ff;
     color: #fff;
-    transition: 0.3s;
 }
-.footer-social a:hover {
-    background: #0f6dc0;
+.flash-error {
+    background: #ff5555;
+    color: #fff;
 }
 
 /*-------------------------------------
-12. SCROLL TOP
+10. RESPONSIVE
 --------------------------------------*/
-#scroll-Top .return-to-top {
-    background: #1e90ff;
-    color: #fff;
-    border: 1px solid #1e90ff;
-}
-#scroll-Top .return-to-top:hover {
-    background: #0f6dc0;
-}
-
-/*-------------------------------------
-13. RESPONSIVE MEDIA QUERIES
---------------------------------------*/
-@media only screen and (max-width: 1200px) {
-    .welcome-hero-txt h2 {
-        font-size: 40px;
+@media (max-width: 992px) {
+    .main-nav a {
+        display: block;
+        margin: 10px 0;
     }
-    .statistics-content {
-        font-size: 50px;
+    .lesson, .single-list-topics-content {
+        padding: 15px;
     }
 }
-
-@media only screen and (max-width: 992px) {
-    .welcome-hero {
-        height: 600px;
-    }
-    .welcome-hero-txt h2 {
-        font-size: 32px;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .welcome-hero {
-        height: 500px;
-        padding: 0 20px;
-    }
-    .welcome-hero-txt h2 {
-        font-size: 28px;
-    }
-    nav.navbar.bootsnav ul.nav {
-        text-align: center;
-    }
-}
-
-@media only screen and (max-width: 576px) {
-    .welcome-hero-txt h2 {
-        font-size: 24px;
-    }
-    .statistics-content {
-        font-size: 36px;
-    }
+@media (max-width: 576px) {
+    h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 18px; }
 }
