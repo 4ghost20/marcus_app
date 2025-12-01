@@ -1,12 +1,24 @@
 {% extends "base.html" %}
-{% block title %}Home - Marcus Aurelius{% endblock %}
+{% block title %}Home – Marcus Aurelius{% endblock %}
+
 {% block content %}
-  <section class="hero">
-    <h1>Welcome, {{ username }}</h1>
-    <p class="lead">A simple daily practice to live with clarity, discipline, and calm.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="{{ url_for('daily') }}">Start Today</a>
-      <a class="btn btn-ghost" href="{{ url_for('about') }}">Learn More</a>
+<section class="welcome-hero">
+    <div class="welcome-hero-txt">
+        <h2>Welcome, {{ username }}!</h2>
+        <p>{{ message }}</p>
+        <a href="{{ url_for('daily') }}" class="welcome-hero-btn">Start Your Practice</a>
     </div>
-  </section>
+</section>
+
+<section class="explore container">
+    <h2>Explore Virtues</h2>
+    <div class="single-explore-item">
+        <h3>Discipline</h3>
+        <p>Learn how to master self-control and focus on what matters most.</p>
+    </div>
+    <div class="single-explore-item">
+        <h3>Patience</h3>
+        <p>Understand the value of patience in life and daily practice.</p>
+    </div>
+</section>
 {% endblock %}

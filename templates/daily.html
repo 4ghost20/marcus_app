@@ -1,35 +1,38 @@
 {% extends "base.html" %}
+{% block title %}Daily Reflection – Marcus Aurelius{% endblock %}
+
 {% block content %}
+<section class="container">
+    <h2>Daily Reflection</h2>
 
-<h2>Daily Reflection</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
 
-<form method="POST">
-    {{ form.hidden_tag() }}
+        <div class="single-list-topics-content">
+            {{ form.reflection.label }}<br>
+            {{ form.reflection(rows=6, class="form-control") }}
+            {% for error in form.reflection.errors %}
+                <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </div>
 
-    <div>
-        {{ form.reflection.label }}<br>
-        {{ form.reflection(rows=4, cols=50) }}
-        {% for error in form.reflection.errors %}
-            <span style="color:red;">{{ error }}</span>
-        {% endfor %}
+        <button type="submit">Submit Reflection</button>
+    </form>
+
+    {% if reflection %}
+    <div class="single-blog-item">
+        <h3>Your Reflection:</h3>
+        <p>{{ reflection }}</p>
     </div>
+    {% endif %}
 
-    <div style="margin-top: 10px;">
-        {{ form.submit() }}
-    </div>
-</form>
-
-{% if reflection %}
-    <h3>Your Reflection:</h3>
-    <p>{{ reflection }}</p>
-{% endif %}
-
-<h3>Today's Virtue: {{ virtue }}</h3>
-<ul class="virtues-list">
-    {% for v in virtues_list %}
-        <li>{{ v }}</li>
-    {% endfor %}
-</ul>
-
-
+    <section class="statistics">
+        <h3>Today's Virtue: {{ virtue }}</h3>
+        <ul class="virtues-list">
+            {% for v in virtues_list %}
+                <li>{{ v }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</section>
 {% endblock %}

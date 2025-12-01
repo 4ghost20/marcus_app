@@ -1,48 +1,312 @@
-/* --- Basic Zen Theme --- */
-:root{
-  --bg:#F4FAFF; --white:#FFF; --cerulean:#007BA7; --soft:#7BC1D9;
-  --green:#3CB371; --text:#0f1720; --muted:#6B7280; --radius:12px;
-  --card-shadow:0 6px 18px rgba(15,23,32,0.06); --max-width:1000px;
+/*-------------------------------------
+1. RESET & BASE TYPOGRAPHY
+--------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:"Inter",sans-serif;background:linear-gradient(180deg,var(--bg)0%,#eef9ff 100%);color:var(--text);}
-.container{max-width:var(--max-width);margin:0 auto;padding:2rem;}
-h1,h2,h3{color:var(--cerulean);}
-p,li{font-size:16px;line-height:1.5;}
-ul.virtues-list,ul.virtues-list li{color:#000;} /* visibility fix */
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.5);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,32,0.04);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0;}
-.brand a{text-decoration:none;font-weight:600;color:var(--cerulean);letter-spacing:.4px;font-size:1.05rem;}
-.main-nav a{margin-left:1rem;text-decoration:none;color:var(--text);padding:.35rem .6rem;border-radius:8px;font-weight:500;}
-.main-nav a:hover{background:rgba(123,193,217,0.12);color:var(--cerulean);}
+html, body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #fff;
+    background: #000;
+    overflow-x: hidden;
+}
 
-/* Hero */
-.hero{text-align:center;margin:2rem 0;padding:2rem;border-radius:var(--radius);background:linear-gradient(180deg,rgba(119,189,211,.08),rgba(255,255,255,0));box-shadow:var(--card-shadow);}
-.hero h1{font-size:2rem;font-weight:600;}
-.lead{color:var(--muted);margin-top:.6rem;}
-.cta-row{margin-top:1.2rem;display:inline-flex;gap:.6rem;}
+a, a:hover, a:active, a:focus {
+    text-decoration: none;
+    color: #1e90ff;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
 
-/* Buttons */
-.btn{padding:10px 20px;border-radius:8px;font-weight:bold;text-decoration:none;transition:.3s;}
-.btn-primary{background-color:#028090;color:white;border:none;}
-.btn-primary:hover{background-color:#026373;}
-.btn-ghost{background-color:transparent;color:#028090;border:2px solid #028090;}
-.btn-ghost:hover{background-color:#028090;color:white;}
+h1,h2,h3,h4,h5,h6 {
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
-/* Cards */
-.card{background:var(--white);border-radius:var(--radius);padding:1rem;box-shadow:var(--card-shadow);border:1px solid rgba(15,23,32,0.03);}
-.card h3{margin:0 0 .6rem 0;color:var(--cerulean);}
-.card p{margin:0;color:var(--muted);line-height:1.5;}
+p {
+    color: #ccc;
+    line-height: 1.8;
+}
 
-/* Forms */
-form{max-width:600px;margin:20px auto;padding:20px;background:white;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,0.1);}
-textarea{width:100%;height:150px;padding:10px;font-size:16px;border-radius:8px;border:1px solid #ccc;}
-input[type="submit"]{margin-top:10px;cursor:pointer;}
+/* Inputs & Buttons */
+input, textarea, select, button {
+    outline: none;
+    border: none;
+    background: #111;
+    color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+}
 
-/* Footer */
-.site-footer{margin-top:3rem;padding:1.2rem 0;text-align:center;color:var(--muted);font-size:.9rem;}
+button {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
-/* Small screens */
-@media(max-width:640px){.header-inner{padding:.6rem 0;}.hero h1{font-size:1.4rem;}.container{padding:1rem;}.main-nav a{margin-left:.5rem;padding:.35rem .45rem;}}
+button:hover {
+    background: #0f6dc0;
+}
+
+/*-------------------------------------
+2. HEADER & NAVIGATION
+--------------------------------------*/
+.header-top {
+    background: #111;
+    border-bottom: 1px solid #222;
+}
+
+.header-top ul li a {
+    color: #ccc;
+    font-size: 12px;
+}
+
+nav.navbar.bootsnav {
+    background-color: #000;
+    border-bottom: none;
+}
+
+.navbar-header a.navbar-brand {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+.navbar-header a.navbar-brand span {
+    color: #1e90ff;
+}
+
+nav.navbar.bootsnav ul.nav > li > a {
+    color: #fff;
+    text-transform: uppercase;
+}
+nav.navbar.bootsnav ul.nav > li > a:hover,
+nav.navbar.bootsnav ul.nav > li.active > a {
+    color: #1e90ff;
+}
+
+/*-------------------------------------
+3. HERO SECTION
+--------------------------------------*/
+.welcome-hero {
+    position: relative;
+    background: #111 url('../images/welcome-hero/banner.jpg') center/cover no-repeat;
+    text-align: center;
+    height: 800px;
+}
+
+.welcome-hero:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.welcome-hero-txt h2 {
+    font-size: 48px;
+    color: #1e90ff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.welcome-hero-txt p {
+    font-size: 18px;
+    color: #fff;
+}
+
+.welcome-hero-btn {
+    background: #1e90ff;
+    color: #fff;
+    border-radius: 3px;
+    padding: 15px 30px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.welcome-hero-btn:hover {
+    background: #0f6dc0;
+}
+
+/*-------------------------------------
+4. LIST TOPICS
+--------------------------------------*/
+.single-list-topics-content {
+    background: #111;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    transition: 0.3s;
+}
+.single-list-topics-content:hover {
+    background: #1e90ff;
+    box-shadow: 0 5px 15px rgba(30,144,255,0.5);
+}
+
+/*-------------------------------------
+5. WORKS / HOW IT WORKS
+--------------------------------------*/
+.single-how-works {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+.single-how-works:hover {
+    background: #1e90ff;
+    box-shadow: 0 5px 15px rgba(30,144,255,0.5);
+}
+
+/*-------------------------------------
+6. EXPLORE SECTION
+--------------------------------------*/
+.explore {
+    background: #000;
+    color: #fff;
+    padding: 120px 0;
+}
+
+.single-explore-item {
+    background: #111;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+.single-explore-item:hover {
+    background: #1e90ff;
+    box-shadow: 0 10px 20px rgba(30,144,255,0.3);
+}
+
+/*-------------------------------------
+7. TESTIMONIALS
+--------------------------------------*/
+.single-testimonial-box {
+    background: #111;
+    color: #fff;
+    box-shadow: 0 0 5px rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+.single-testimonial-box:hover {
+    box-shadow: 0 10px 20px rgba(30,144,255,0.3);
+}
+
+/*-------------------------------------
+8. STATISTICS / COUNTER
+--------------------------------------*/
+.statistics {
+    background: #000 url('../../assets/images/counter/counter-banner.jpg') center/cover fixed;
+    color: #fff;
+}
+.statistics-content {
+    font-size: 60px;
+    color: #1e90ff;
+}
+
+/*-------------------------------------
+9. BLOG
+--------------------------------------*/
+.single-blog-item {
+    background: #111;
+    color: #fff;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+.single-blog-item:hover {
+    box-shadow: 0 10px 20px rgba(30,144,255,0.3);
+}
+
+/*-------------------------------------
+10. SUBSCRIBE
+--------------------------------------*/
+.subscription {
+    background: #000;
+    color: #fff;
+}
+
+.subscription-input-group .subscription-input-form {
+    background: #111;
+    color: #fff;
+    border: 1px solid #222;
+}
+.appsLand-btn {
+    background: #1e90ff;
+    color: #fff;
+}
+.appsLand-btn:hover {
+    background: #0f6dc0;
+}
+
+/*-------------------------------------
+11. FOOTER
+--------------------------------------*/
+.footer-menu {
+    background: #111;
+    color: #fff;
+}
+
+.footer-social a {
+    background: #1e90ff;
+    color: #fff;
+    transition: 0.3s;
+}
+.footer-social a:hover {
+    background: #0f6dc0;
+}
+
+/*-------------------------------------
+12. SCROLL TOP
+--------------------------------------*/
+#scroll-Top .return-to-top {
+    background: #1e90ff;
+    color: #fff;
+    border: 1px solid #1e90ff;
+}
+#scroll-Top .return-to-top:hover {
+    background: #0f6dc0;
+}
+
+/*-------------------------------------
+13. RESPONSIVE MEDIA QUERIES
+--------------------------------------*/
+@media only screen and (max-width: 1200px) {
+    .welcome-hero-txt h2 {
+        font-size: 40px;
+    }
+    .statistics-content {
+        font-size: 50px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .welcome-hero {
+        height: 600px;
+    }
+    .welcome-hero-txt h2 {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .welcome-hero {
+        height: 500px;
+        padding: 0 20px;
+    }
+    .welcome-hero-txt h2 {
+        font-size: 28px;
+    }
+    nav.navbar.bootsnav ul.nav {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .welcome-hero-txt h2 {
+        font-size: 24px;
+    }
+    .statistics-content {
+        font-size: 36px;
+    }
+}

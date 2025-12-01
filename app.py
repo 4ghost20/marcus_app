@@ -30,6 +30,10 @@ def daily():
 
     return render_template("daily.html", form=form, reflection=reflection_text, virtue=virtue, virtues_list=virtues_list)
 
+@app.route('/lessons')
+def lessons():
+    return render_template("lessons.html")
+
 @app.route('/entry', methods=['GET', 'POST'])
 def entry():
     form = DailyReflectionForm()
