@@ -1,29 +1,25 @@
 {% extends "base.html" %}
-{% block title %}Reflection Entry – Marcus Aurelius{% endblock %}
+{% block title %}Past Reflections – Marcus Aurelius{% endblock %}
 
 {% block content %}
 <section class="container">
-    <h2>Daily Reflection Entry</h2>
+    <h2>Past Reflections</h2>
 
-    <form method="POST">
-        {{ form.hidden_tag() }}
-
-        <div class="single-list-topics-content">
-            <label for="reflection">Today's Reflection</label>
-            {{ form.reflection(rows=6, class="form-control") }}
-        </div>
-
-        <button type="submit" class="appsLand-btn">Submit Reflection</button>
-    </form>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="single-testimonial-box">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+    {% if entries %}
+        {% for e in entries %}
+            <div class="single-entry">
+                <h3>
+                    <a href="{{ url_for('entry', id=e.id) }}">
+                        {{ e.title or "Untitled Reflection" }}
+                    </a>
+                </h3>
+                <small>{{ e.created_at.strftime("%B %d, %Y") }}</small>
+                <p>{{ e.content[:120] }}{% if e.content|length > 120 %}...{% endif %}</p>
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No reflections saved yet. Start your practice today!</p>
+    {% endif %}
 </section>
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Past Reflections – Marcus Aurelius{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h2>Past Reflections</h2>
+
+    {% if entries %}
+        {% for entry in entries %}
+            <div class="entry">
+                <h3>{{ entry.title }}</h3>
+                <p>{{ entry.content }}</p>
+                <small>Created at: {{ entry.created_at.strftime("%B %d, %Y") }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No reflections yet. Start writing <a href="{{ url_for('daily') }}">here</a>.</p>
+    {% endif %}
+</section>
+{% endblock %}
