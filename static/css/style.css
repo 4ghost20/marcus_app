@@ -197,3 +197,22 @@ input:focus, textarea:focus, select:focus {
     h2 { font-size: 24px; }
     h3 { font-size: 18px; }
 }
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-right: 8px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #E53935;
+    color: white;
+    border: none;
+}

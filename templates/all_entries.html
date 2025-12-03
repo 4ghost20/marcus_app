@@ -5,16 +5,39 @@
 <section class="container">
     <h2>Past Reflections</h2>
 
+    <!-- 🔍 Search Bar (should appear ABOVE the entries) -->
+    <form method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search reflections..." 
+               value="{{ request.args.get('q', '') }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <br>
+
     {% if entries %}
         {% for entry in entries %}
             <div class="entry">
                 <h3>{{ entry.title }}</h3>
                 <p>{{ entry.content }}</p>
                 <small>Created at: {{ entry.created_at.strftime("%B %d, %Y") }}</small>
+
+                <!-- ✏️ Edit Button -->
+                <a href="{{ url_for('edit_reflection', id=entry.id) }}" class="btn btn-edit">
+                    Edit
+                </a>
+
+                <!-- 🗑 Delete Button -->
+                <form action="{{ url_for('delete_reflection', id=entry.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-delete"
+                        onclick="return confirm('Delete this reflection?');">
+                        Delete
+                    </button>
+                </form>
+
             </div>
         {% endfor %}
     {% else %}
-        <p>No reflections yet. Start writing <a href="{{ url_for('daily') }}">here</a>.</p>
+        <p>No reflections found. Start writing <a href="{{ url_for('daily') }}">here</a>.</p>
     {% endif %}
 </section>
 {% endblock %}
