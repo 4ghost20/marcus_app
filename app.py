@@ -1,9 +1,11 @@
 # app.py
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from datetime import date
 from flask_migrate import Migrate
 from forms.daily_form import DailyReflectionForm
 from models import db, DailyEntry
+from models import User
+from database import db
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///marcus.db'
@@ -16,6 +18,65 @@ migrate = Migrate(app, db)
 with app.app_context():
     db.create_all()
 
+# ------------------- REGISTER -------------------
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+        # Check duplication
+        if User.query.filter((User.username == username) | (User.email == email)).first():
+            flash("User already exists")
+            return redirect(url_for("register"))
+
+        user = User(username=username, email=email)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+
+        flash("Account created. Please log in.")
+        return redirect(url_for("login"))
+
+    return render_template("register.html")
+
+
+# ------------------- LOGIN -------------------
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        user = User.query.filter_by(username=username).first()
+
+        if user and user.check_password(password):
+            session["user_id"] = user.id
+            session["username"] = user.username
+            flash("Logged in")
+            return redirect(url_for("dashboard"))
+
+        flash("Incorrect username or password")
+
+    return render_template("login.html")
+
+
+# ------------------- LOGOUT -------------------
+@app.route("/logout")
+def logout():
+    session.clear()
+    flash("Logged out")
+    return redirect(url_for("login"))
+
+
+# ------------------- DASHBOARD -------------------
+@app.route("/")
+@app.route("/dashboard")
+def dashboard():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("dashboard.html", username=session["username"])
 
 # ------------------- ROUTES -------------------
 

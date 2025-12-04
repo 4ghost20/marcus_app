@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Welcome, {{ username }} 👋</h2>
+<p>Your Marcus App dashboard is ready.</p>
+
+<a href="{{ url_for('entries') }}">Go to Journal</a>
+{% endblock %}
