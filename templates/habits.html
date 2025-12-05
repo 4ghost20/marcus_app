@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Your Habits – Marcus Aurelius{% endblock %}
+
+{% block content %}
+<section class="habits-section">
+    <h2>Your Habits</h2>
+
+    <form method="POST" class="habit-form">
+        <input type="text" name="habit_name" placeholder="New habit" required>
+        <button type="submit" class="btn">Add Habit</button>
+    </form>
+
+    <ul class="habit-list">
+        {% for habit in habits %}
+            <li>{{ habit.name }}</li>
+        {% else %}
+            <li>No habits yet. Start by adding one above!</li>
+        {% endfor %}
+    </ul>
+
+    <div class="habits-links">
+        <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
+        <a href="{{ url_for('daily') }}" class="btn">New Reflection</a>
+        <a href="{{ url_for('entries') }}" class="btn">View Journal</a>
+    </div>
+</section>
+{% endblock %}

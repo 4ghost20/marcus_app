@@ -2,17 +2,17 @@
 {% block title %}Daily Reflection – Marcus Aurelius{% endblock %}
 
 {% block content %}
-<section class="container">
+<section class="daily-section">
     <h2>Daily Reflection</h2>
 
-    <form method="POST">
+    <form method="POST" class="reflection-form">
         {{ form.hidden_tag() }}
 
         <div class="single-list-topics-content">
             {{ form.title.label }}<br>
             {{ form.title(size=40, class="form-control") }}
             {% for error in form.title.errors %}
-                <span style="color:red;">{{ error }}</span>
+                <span class="form-error">{{ error }}</span>
             {% endfor %}
         </div>
 
@@ -20,20 +20,25 @@
             {{ form.content.label }}<br>
             {{ form.content(rows=6, class="form-control") }}
             {% for error in form.content.errors %}
-                <span style="color:red;">{{ error }}</span>
+                <span class="form-error">{{ error }}</span>
             {% endfor %}
         </div>
 
-        <button type="submit" class="appsLand-btn">Submit Reflection</button>
+        <button type="submit" class="btn">Submit Reflection</button>
     </form>
 
     <section class="statistics">
-        <h3>Today's Virtue: {{ virtue }}</h3>
+        <h3>Today's Virtue: <span class="virtue-highlight">{{ virtue }}</span></h3>
         <ul class="virtues-list">
             {% for v in virtues_list %}
                 <li>{{ v }}</li>
             {% endfor %}
         </ul>
     </section>
+
+    <div class="reflection-links">
+        <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
+        <a href="{{ url_for('entries') }}" class="btn">View Journal</a>
+    </div>
 </section>
 {% endblock %}

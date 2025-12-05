@@ -1,7 +1,6 @@
 /*==================================================
-* Marcus Aurelius App CSS - Black/White/Blue Theme
-* Fully integrated, responsive, modern block layout
-* Author: Customized for Musa M
+* Marcus Aurelius App CSS - Lively Black/Blue Theme
+* Responsive, modern, interactive, glowing accents
 ====================================================*/
 
 /*-------------------------------------
@@ -16,8 +15,8 @@
 html, body {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
-    color: #fff;
-    background: #000;
+    color: #eee;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
     line-height: 1.8;
 }
 
@@ -27,7 +26,8 @@ a {
     transition: 0.3s ease;
 }
 a:hover {
-    color: #0f6dc0;
+    color: #00d4ff;
+    text-shadow: 0 0 8px rgba(0,212,255,0.8);
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -35,6 +35,7 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(30,144,255,0.6);
 }
 
 p {
@@ -46,26 +47,36 @@ p {
 2. HEADER & NAV
 --------------------------------------*/
 .site-header {
-    background: #111;
-    padding: 15px 0;
-    border-bottom: 1px solid #222;
+    background: linear-gradient(90deg, #111, #222);
+    padding: 20px 0;
+    border-bottom: 2px solid #1e90ff;
+    box-shadow: 0 4px 12px rgba(30,144,255,0.2);
 }
 .site-header .brand a {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
     color: #fff;
+    letter-spacing: 1px;
 }
-.site-header .brand a span {
-    color: #1e90ff;
-}
-
 .main-nav a {
     margin-left: 25px;
     font-weight: 500;
     text-transform: uppercase;
+    position: relative;
 }
-.main-nav a:hover {
-    color: #1e90ff;
+.main-nav a::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #00d4ff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+.main-nav a:hover::after {
+    width: 100%;
 }
 
 /*-------------------------------------
@@ -81,19 +92,37 @@ p {
 /*-------------------------------------
 4. BUTTONS
 --------------------------------------*/
-.btn, button {
-    background: #1e90ff;
+button, .btn {
+    background: linear-gradient(135deg, #1e90ff, #00d4ff);
     color: #fff;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 10px 20px;
     font-weight: 500;
     text-transform: uppercase;
     cursor: pointer;
     border: none;
-    transition: 0.3s ease;
+    transition: 0.3s ease, transform 0.2s ease;
 }
-.btn:hover, button:hover {
-    background: #0f6dc0;
+button:hover, .btn:hover {
+    background: linear-gradient(135deg, #00d4ff, #1e90ff);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,212,255,0.4);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #28a745, #7bed9f);
+}
+.btn-edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(40,167,69,0.4);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #e53935, #ff6b6b);
+}
+.btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(229,57,53,0.4);
 }
 
 /*-------------------------------------
@@ -101,38 +130,36 @@ p {
 --------------------------------------*/
 input, textarea, select {
     width: 100%;
-    padding: 12px;
-    border-radius: 4px;
-    border: 1px solid #222;
+    padding: 14px;
+    border-radius: 6px;
+    border: 1px solid #333;
     background: #111;
     color: #fff;
     margin-bottom: 15px;
+    transition: 0.3s;
 }
 input:focus, textarea:focus, select:focus {
-    border-color: #1e90ff;
+    border-color: #00d4ff;
+    box-shadow: 0 0 8px rgba(0,212,255,0.5);
 }
 
 /*-------------------------------------
-6. LESSON & REFLECTION BLOCKS
+6. REFLECTIONS & LESSON BLOCKS
 --------------------------------------*/
 .lesson, .single-list-topics-content {
-    background: #111;
-    border: 1px solid #222;
+    background: linear-gradient(145deg, #111, #1a1a1a);
+    border-radius: 8px;
     padding: 20px;
-    border-radius: 6px;
     margin-bottom: 20px;
-    transition: 0.3s;
+    border-left: 4px solid #1e90ff;
+    transition: 0.3s ease, transform 0.2s ease;
 }
 .lesson:hover, .single-list-topics-content:hover {
-    background: #1e90ff;
-    color: #fff;
-    box-shadow: 0 10px 20px rgba(30,144,255,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(30,144,255,0.4);
 }
 .lesson h2, .lesson-item h3 {
-    color: #1e90ff;
-}
-.lesson-item p {
-    color: #ccc;
+    color: #00d4ff;
 }
 
 /*-------------------------------------
@@ -145,38 +172,47 @@ input:focus, textarea:focus, select:focus {
     gap: 10px;
 }
 .virtues-list li {
-    background: #222;
+    background: linear-gradient(135deg, #222, #333);
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    transition: 0.3s ease, transform 0.2s ease;
+}
+.virtues-list li:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #1e90ff, #00d4ff);
+    color: #fff;
 }
 
 /*-------------------------------------
 8. FOOTER
 --------------------------------------*/
 .site-footer {
-    background: #111;
+    background: linear-gradient(90deg, #111, #222);
     text-align: center;
-    padding: 15px 0;
-    border-top: 1px solid #222;
+    padding: 20px 0;
+    border-top: 2px solid #1e90ff;
 }
 .site-footer small {
     color: #ccc;
 }
 
 /*-------------------------------------
-9. ALERTS / FLASH
+9. FLASH / ALERTS
 --------------------------------------*/
 .flash {
-    padding: 12px;
+    padding: 14px;
     margin-bottom: 15px;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-align: center;
 }
 .flash-success {
-    background: #1e90ff;
+    background: linear-gradient(135deg, #1e90ff, #00d4ff);
     color: #fff;
 }
 .flash-error {
-    background: #ff5555;
+    background: linear-gradient(135deg, #e53935, #ff6b6b);
     color: #fff;
 }
 
@@ -196,23 +232,4 @@ input:focus, textarea:focus, select:focus {
     h1 { font-size: 28px; }
     h2 { font-size: 24px; }
     h3 { font-size: 18px; }
-}
-.btn {
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    margin-right: 8px;
-    font-size: 0.9em;
-    cursor: pointer;
-}
-
-.btn-edit {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.btn-delete {
-    background-color: #E53935;
-    color: white;
-    border: none;
 }

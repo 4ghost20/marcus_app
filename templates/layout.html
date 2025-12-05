@@ -12,6 +12,18 @@
     .flash { background:#fee; border:1px solid #fcc; padding:8px; margin-bottom:12px; border-radius:6px; }
     .container { max-width:900px; margin:0 auto; }
   </style>
+  <header>
+    {% if session.username %}
+        <p>Welcome, {{ session.username }}!</p>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a> |
+        <a href="{{ url_for('daily') }}">Daily Reflection</a> |
+        <a href="{{ url_for('habits') }}">Habits</a> |
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a> |
+        <a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+</header>
 </head>
 <body>
   <div class="container">
@@ -22,6 +34,8 @@
         <a href="{{ url_for('entries') }}">Journal</a>
         <a href="{{ url_for('logout') }}">Logout</a>
       {% else %}
+        <a href="{{ url_for('habits') }}">Habits</a>
+
         <a href="{{ url_for('login') }}">Login</a>
         <a href="{{ url_for('register') }}">Register</a>
       {% endif %}

@@ -1,7 +1,15 @@
-{% extends "layout.html" %}
-{% block content %}
-<h2>Welcome, {{ username }} 👋</h2>
-<p>Your Marcus App dashboard is ready.</p>
+{% extends "base.html" %}
+{% block title %}Dashboard – Marcus Aurelius{% endblock %}
 
-<a href="{{ url_for('entries') }}">Go to Journal</a>
+{% block content %}
+<section class="dashboard">
+    <h2>Welcome, {{ session.get('username') }} 👋</h2>
+    <p>Your Marcus App dashboard is ready.</p>
+
+    <div class="dashboard-links">
+        <a href="{{ url_for('entries') }}" class="btn">Go to Journal</a>
+        <a href="{{ url_for('habits') }}" class="btn">Go to Habits</a>
+        <a href="{{ url_for('daily') }}" class="btn">New Reflection</a>
+    </div>
+</section>
 {% endblock %}
