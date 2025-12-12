@@ -2,14 +2,51 @@
 {% block title %}Dashboard – Marcus Aurelius{% endblock %}
 
 {% block content %}
-<section class="dashboard">
-    <h2>Welcome, {{ session.get('username') }} 👋</h2>
-    <p>Your Marcus App dashboard is ready.</p>
+<section class="container mt-4">
+    <h2 class="mb-3">Welcome, {{ session.get('username') }} 👋</h2>
+    <p class="text-muted">Your Marcus App dashboard is ready.</p>
 
-    <div class="dashboard-links">
-        <a href="{{ url_for('entries') }}" class="btn">Go to Journal</a>
-        <a href="{{ url_for('habits') }}" class="btn">Go to Habits</a>
-        <a href="{{ url_for('daily') }}" class="btn">New Reflection</a>
+    <div class="row g-4 mt-3">
+        <!-- Reflections card -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Reflections</h5>
+                    <p class="card-text">
+                        You have <strong>{{ reflections_count or 0 }}</strong> reflections logged.
+                    </p>
+                    <a href="{{ url_for('entries') }}" class="btn btn-primary">View Journal</a>
+                    <a href="{{ url_for('daily') }}" class="btn btn-outline-secondary">New Reflection</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habits card -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Habits</h5>
+                    <p class="card-text">
+                        You are tracking <strong>{{ habits_count or 0 }}</strong> habits.
+                    </p>
+                    <a href="{{ url_for('habits') }}" class="btn btn-success">Manage Habits</a>
+                    <a href="{{ url_for('habits_weekly') }}" class="btn btn-outline-secondary">Weekly View</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress card -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Progress</h5>
+                    <p class="card-text">
+                        Weekly completion: <strong>{{ weekly_progress or 0 }}%</strong>
+                    </p>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-info">Refresh</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

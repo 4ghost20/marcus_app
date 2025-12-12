@@ -1,27 +1,44 @@
 {% extends "base.html" %}
-{% block title %}Your Habits – Marcus Aurelius{% endblock %}
+{% block title %}Manage Habits – Marcus Aurelius{% endblock %}
 
 {% block content %}
-<section class="habits-section">
-    <h2>Your Habits</h2>
+<section class="container mt-4">
+    <h2 class="mb-3">Manage Habits</h2>
 
-    <form method="POST" class="habit-form">
-        <input type="text" name="habit_name" placeholder="New habit" required>
-        <button type="submit" class="btn">Add Habit</button>
+    <!-- Create habit form -->
+    <form method="POST" class="mb-3">
+        <div class="mb-2">
+            <input type="text" name="habit_name" class="form-control" placeholder="New habit" required>
+        </div>
+        <div class="mb-2">
+            <label>Select days:</label><br>
+            {% for day in ["mon","tue","wed","thu","fri","sat","sun"] %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="days" value="{{ day }}" id="{{ day }}">
+                    <label class="form-check-label" for="{{ day }}">{{ day|capitalize }}</label>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Add Habit</button>
     </form>
 
-    <ul class="habit-list">
+    <!-- Habit list -->
+    <ul class="list-group mb-3">
         {% for habit in habits %}
-            <li>{{ habit.name }}</li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ habit.name }}
+                <form method="POST" action="{{ url_for('delete_habit', habit_id=habit.id) }}" style="margin:0;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </li>
         {% else %}
-            <li>No habits yet. Start by adding one above!</li>
+            <li class="list-group-item">No habits yet. Start by adding one above!</li>
         {% endfor %}
     </ul>
 
-    <div class="habits-links">
-        <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
-        <a href="{{ url_for('daily') }}" class="btn">New Reflection</a>
-        <a href="{{ url_for('entries') }}" class="btn">View Journal</a>
+    <div class="d-flex gap-2">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        <a href="{{ url_for('habits_weekly') }}" class="btn btn-success">Weekly View</a>
     </div>
 </section>
 {% endblock %}

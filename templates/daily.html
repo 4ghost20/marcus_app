@@ -2,43 +2,43 @@
 {% block title %}Daily Reflection – Marcus Aurelius{% endblock %}
 
 {% block content %}
-<section class="daily-section">
-    <h2>Daily Reflection</h2>
+<section class="container mt-4">
+    <h2 class="mb-3">Daily Reflection</h2>
 
-    <form method="POST" class="reflection-form">
+    <form method="POST" class="mb-4">
         {{ form.hidden_tag() }}
 
-        <div class="single-list-topics-content">
-            {{ form.title.label }}<br>
-            {{ form.title(size=40, class="form-control") }}
+        <div class="mb-3">
+            {{ form.title.label(class="form-label") }}
+            {{ form.title(class="form-control") }}
             {% for error in form.title.errors %}
-                <span class="form-error">{{ error }}</span>
+                <div class="text-danger small">{{ error }}</div>
             {% endfor %}
         </div>
 
-        <div class="single-list-topics-content">
-            {{ form.content.label }}<br>
-            {{ form.content(rows=6, class="form-control") }}
+        <div class="mb-3">
+            {{ form.content.label(class="form-label") }}
+            {{ form.content(class="form-control", rows=6) }}
             {% for error in form.content.errors %}
-                <span class="form-error">{{ error }}</span>
+                <div class="text-danger small">{{ error }}</div>
             {% endfor %}
         </div>
 
-        <button type="submit" class="btn">Submit Reflection</button>
+        <button type="submit" class="btn btn-primary">Submit Reflection</button>
     </form>
 
-    <section class="statistics">
-        <h3>Today's Virtue: <span class="virtue-highlight">{{ virtue }}</span></h3>
-        <ul class="virtues-list">
+    <section class="mb-4">
+        <h3>Today's Virtue: <span class="badge bg-info text-dark">{{ virtue }}</span></h3>
+        <ul class="list-group mt-2">
             {% for v in virtues_list %}
-                <li>{{ v }}</li>
+                <li class="list-group-item">{{ v }}</li>
             {% endfor %}
         </ul>
     </section>
 
-    <div class="reflection-links">
-        <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
-        <a href="{{ url_for('entries') }}" class="btn">View Journal</a>
+    <div class="d-flex gap-2">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        <a href="{{ url_for('entries') }}" class="btn btn-outline-primary">View Journal</a>
     </div>
 </section>
 {% endblock %}
